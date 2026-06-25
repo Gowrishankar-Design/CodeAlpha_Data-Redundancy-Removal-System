@@ -1,0 +1,65 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #0f1117;
+  --surface:   #1a1d27;
+  --surface2:  #22263a;
+  --border:    #2e3350;
+  --text:      #e8eaf6;
+  --muted:     #7b82a8;
+  --accent:    #6c8dfa;
+  --accent-dim:#2d3a6e;
+  --green:     #34d399;
+  --green-dim: #0d3326;
+  --red:       #f87171;
+  --red-dim:   #3b1111;
+  --amber:     #fbbf24;
+  --amber-dim: #3b2a00;
+  --radius:    10px;
+  --mono:      'JetBrains Mono', monospace;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--surface); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+@media (max-width: 760px) {
+  .drrs-grid-2col {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+.drrs-spinner {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  flex-shrink: 0;
+  animation: drrs-spin 0.8s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drrs-spinner { animation: none; }
+}
+
+@keyframes drrs-spin {
+  to { transform: rotate(360deg); }
+}

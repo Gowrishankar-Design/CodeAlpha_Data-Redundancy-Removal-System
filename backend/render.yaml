@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: drrs-backend
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: DATABASE_URL
+        sync: false   # optional — set this in the Render dashboard to a Postgres
+                       # connection string (Neon, Supabase, Render Postgres, etc.)
+                       # for data that survives every redeploy. If left unset, the
+                       # app falls back to a local SQLite file, which still survives
+                       # restarts and sleep/wake cycles, just not a full redeploy
+                       # on Render's free tier.
